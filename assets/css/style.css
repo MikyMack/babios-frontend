@@ -2926,9 +2926,9 @@ a img.aligncenter {
   content: "\f107";
   top: 50%;
   right: 0;
-  font-family: "Font Awesome 5 Pro";
+  font-family: "Font Awesome 5 Free";
   color: #000;
-  font-weight: 500;
+  font-weight: 900;
   pointer-events: none;
   -webkit-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
@@ -4914,8 +4914,8 @@ header.stop .top-header {
 .page-banner-wrap .breadcrumb li + li::before {
   color: #c5c2c2;
   content: "\f105";
-  font-family: "Font Awesome 5 Pro";
-  font-weight: 400;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
 }
 
 .mobile-nav {
@@ -6523,8 +6523,8 @@ header.stop .top-header {
   top: 0;
   left: 0;
   content: "\f058";
-  font-family: "Font Awesome 5 Pro";
-  font-weight: 700;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   font-size: 18px;
   color: #086ad7;
 }
@@ -6804,7 +6804,7 @@ header.stop .top-header {
   top: 0;
   left: 0;
   content: "\f058";
-  font-family: "Font Awesome 5 Pro";
+  font-family: "Font Awesome 5 Free";
   font-weight: 700;
   font-size: 25px;
   color: #086ad7;
@@ -6900,9 +6900,9 @@ header.stop .top-header {
   left: 0;
   position: absolute;
   content: "\f058";
-  font-family: "Font Awesome 5 Pro";
+  font-family: "Font Awesome 5 Free";
   color: #086ad7;
-  font-weight: 600;
+  font-weight: 900;
 }
 .about-wrapper .about-content .theme-btn:not(.style-1):hover {
   border-color: #fff;
@@ -7711,8 +7711,8 @@ header.stop .top-header {
   top: 0;
   left: 0;
   content: "\f058";
-  font-family: "Font Awesome 5 Pro";
-  font-weight: 700;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   font-size: 25px;
   color: #086ad7;
 }
@@ -7789,7 +7789,7 @@ header.stop .top-header {
   left: 0;
   position: absolute;
   content: "\f058";
-  font-family: "Font Awesome 5 Pro";
+  font-family: "Font Awesome 5 Free";
   color: rgb(8, 106, 215);
   font-weight: 600;
 }
@@ -9046,7 +9046,7 @@ header.stop .top-header {
   top: 0;
   left: 0;
   content: "\f058";
-  font-family: "Font Awesome 5 Pro";
+  font-family: "Font Awesome 5 Free";
   font-size: 25px;
   color: #086ad7;
 }
@@ -9539,7 +9539,7 @@ header.stop .top-header {
 }
 .single-pricing-plan .plan-features li::before {
   line-height: 1;
-  font-family: "Font Awesome 5 Pro";
+  font-family: "Font Awesome 5 Free";
   position: absolute;
   content: "\f00c";
   z-index: -1;
@@ -9675,7 +9675,7 @@ header.stop .top-header {
 }
 .price__wrapper .price__widget .preice__body ul > li::after {
   line-height: 1;
-  font-family: "Font Awesome 5 Pro";
+  font-family: "Font Awesome 5 Free";
   position: absolute;
   content: "\f336";
   color: #4613b2;
@@ -9775,9 +9775,9 @@ header.stop .top-header {
   left: 0;
   position: absolute;
   content: "\f058";
-  font-family: "Font Awesome 5 Pro";
+  font-family: "Font Awesome 5 Free";
   color: rgb(8, 106, 215);
-  font-weight: 600;
+  font-weight: 900;
 }
 .price__wrapper .price__element .preice__body ul li.active::before {
   color: #e6f0fb;
@@ -11590,11 +11590,11 @@ header.stop .top-header {
   border-radius: 500px;
   padding: 4px;
   content: "\f067";
-  font-family: "Font Awesome 5 Pro";
+  font-family: "Font Awesome 5 Free";
   position: absolute;
   right: 0;
   top: 50%;
-  font-weight: 700;
+  font-weight: 900;
   transform: translateY(-50%);
   color: #fff;
 }
@@ -11624,16 +11624,18 @@ header.stop .top-header {
 }
 .accordion .card-header a:after {
   content: "\f067";
-  font-family: "Font Awesome 5 Pro";
+  font-family: "Font Awesome 5 Free";
   position: absolute;
   right: 0;
   top: 50%;
-  font-weight: 700;
+  font-weight: 900;
   transform: translateY(-50%);
   color: #086ad7;
 }
 .accordion .card-header a[aria-expanded="true"]:after {
   content: "\f068";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   /* <i class="fal fa-angle-up"></i> */
 }
 @media (max-width: 767px) {
@@ -12464,7 +12466,7 @@ header.stop .top-header {
   right: 30px;
   font-size: 110px;
   line-height: 1;
-  font-family: "Font Awesome 5 Pro";
+  font-family: "Font Awesome 5 Free";
   position: absolute;
   content: "\f10d";
   bottom: -20px;
@@ -12631,8 +12633,8 @@ header.stop .top-header {
   top: 0;
   left: 0;
   content: "\f00c";
-  font-family: "Font Awesome 5 Pro";
-  font-weight: 400;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   color: #222;
 }
 .blog-wrapper .single-blog-post .post-content p {
@@ -15574,7 +15576,7 @@ header.stop .top-header {
   top: 0;
   left: 0;
   content: "\f058";
-  font-family: "Font Awesome 5 Pro";
+  font-family: "Font Awesome 5 Free";
   font-weight: 700;
   font-size: 25px;
   color: #696969;
@@ -16223,7 +16225,8 @@ header.stop .top-header {
   position: absolute;
   content: "\f101";
   left: 0;
-  font-family: "Font Awesome 5 Pro";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
 }
 .footer-wrap .single-footer-wid ul li > a {
   color: #696969;
@@ -16804,8 +16807,8 @@ header.stop .top-header {
   top: 0;
   left: 0;
   content: "\f105";
-  font-family: "Font Awesome 5 Pro";
-  font-weight: 700;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   font-size: 13px;
   color: #696969;
   line-height: 19px;
@@ -18126,8 +18129,8 @@ header.stop .top-header {
   position: absolute;
   right: 0;
   top: 50%;
-  font-weight: 400;
-  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
   transform: translateY(-50%);
 }
 @media (max-width: 575px) {
@@ -18450,8 +18453,8 @@ a.rr-arrow-btn:hover svg [stroke="white"] {
   top: 33%;
   width: 58px;
   height: 58px;
-  font-weight: 400;
-  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
   border: 1px solid #010205;
   display: inline-flex;
   align-items: center;
@@ -20121,8 +20124,8 @@ a.rr-arrow-btn:hover svg [stroke="white"] {
   width: 40px;
   height: 40px;
   transition: 0.3s;
-  font-weight: 400;
-  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
   border: 1px solid #010205;
   display: inline-flex;
   align-items: center;
@@ -23935,4 +23938,29 @@ header.header-4.sticky .top-header {
     text-align: center;
     justify-content: center;
   }
+}
+
+#scrollUp i {
+  font-family: "Font Awesome 5 Free" !important;
+  font-weight: 900 !important;
+}
+
+.post-meta i {
+  font-family: "Font Awesome 5 Free" !important;
+  font-weight: 900 !important;
+}
+
+.fa-arrow-right:before {
+  font-family: "Font Awesome 5 Free" !important;
+  font-weight: 900 !important;
+}
+
+.fa-eye:before {
+  font-family: "Font Awesome 5 Free" !important;
+  font-weight: 900 !important;
+}
+
+.fa-calendar-alt:before {
+  font-family: "Font Awesome 5 Free" !important;
+  font-weight: 900 !important;
 }
