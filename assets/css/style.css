@@ -1597,7 +1597,7 @@ section.pt-235 {
   opacity: 0;
   visibility: hidden;
   cursor:
-    url("../img/icon/close-icon.html") 15 15,
+    url("../img/icon/close-icon.png") 15 15,
     auto;
 }
 .overlay.active {
@@ -23963,4 +23963,8 @@ header.header-4.sticky .top-header {
 .fa-calendar-alt:before {
   font-family: "Font Awesome 5 Free" !important;
   font-weight: 900 !important;
+}
+
+.page-nav-wrap ul li a i {
+  height: auto !important;
 }
