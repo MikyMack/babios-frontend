@@ -361,7 +361,7 @@ a:focus{
 
 .dark-section {
     width: 100%;
-      background: linear-gradient(to bottom, #213f42, #4da1a8, #194042);
+      background: linear-gradient(to bottom, #172d2e, #4da1a8, #194042);
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
@@ -485,8 +485,7 @@ header.main-header .header-sticky{
     position: relative;
     top: 0;
 
-    background: rgba(0,0,0,0.2);
-    backdrop-filter: blur(10px);
+background-color: white;
 
     color: #fff;
 
@@ -545,7 +544,7 @@ header.main-header .header-sticky.active{
 	font-weight: 500;
 	line-height: 1.1em;
 	padding: 12px 10px !important;
-	color: white;
+	color: var(--primary-color);
 	background: transparent;
 	border-radius: 0px;
 	text-transform: capitalize;
@@ -9036,6 +9035,7 @@ font-family: "Font Awesome 6 Free";
 .footer-logo-metal img{
 	width: 100%;
 	max-width: 177px;
+	border-radius: 10px;
 }
 
 .footer-contact-list-metal{
