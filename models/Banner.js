@@ -5,19 +5,13 @@ const mongoose = require('mongoose');
 const bannerSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true,
+        required: [true, 'Title is required'],
         trim: true
     },
-    youtubeLink: {
+    imageUrl: {
         type: String,
-        required: true,
-        trim: true,
-        validate: {
-            validator: function (v) {
-                return /^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$/.test(v);
-            },
-            message: 'Invalid YouTube URL'
-        }
+        required: [true, 'Image URL is required'],
+        trim: true
     },
     isActive: {
         type: Boolean,

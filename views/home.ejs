@@ -96,155 +96,60 @@
     <div class="hero-slider-metal swiper">
         <div class="swiper-wrapper">
 
-            <!-- Slide 1 -->
-            <div class="swiper-slide">
-                <div class="hero-metal dark-section parallaxie"
-                    style="background-image: url('../images/babios/banner-1.jpg'); position:relative; background-size: cover; background-position: center; padding-top:200px; padding-bottom:150px; padding-left: 20px; padding-right: 20px; border-radius: 0;">
-                    <div class="bg-overlay"
-                        style="position:absolute; top:0; left:0; width:100%; height:100%;  opacity:0.8; z-index:0;">
-                    </div>
-                    <div class="container" style="position:relative; z-index:1;">
-                        <div class="row justify-content-center">
-                            <div class="col-xl-9 text-center">
-                                <div class="hero-content-metal">
-                                    <div class="section-title">
+            <% banners.forEach(function(banner) { %>
+                <div class="swiper-slide">
+                    <div class="hero-metal dark-section parallaxie"
+                        style="background-image: url('<%= banner.imageUrl %>'); position:relative; background-size: cover; background-position: center; padding-top:200px; padding-bottom:150px; padding-left: 20px; padding-right: 20px; border-radius: 0;">
+                        <div class="bg-overlay"
+                            style="position:absolute; top:0; left:0; width:100%; height:100%;  opacity:0.8; z-index:0;">
+                        </div>
+                        <div class="container" style="position:relative; z-index:1;">
+                            <div class="row justify-content-center">
+                                <div class="col-xl-9 text-center">
+                                    <div class="hero-content-metal">
+                                        <div class="section-title">
 
-                                        <h1 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque">
-                                            Tiny Styles for Little Ones <br>
-                                            <span class="hero-title-image-metal"><img src="images/babios/banner-1.jpg"
-                                                    alt=""></span>
-                                            Made for Big Smiles
-                                            <span class="icon-box"><img src="images/hero-title-image-2-metal.svg"
-                                                    alt=""></span>
-                                        </h1>
+                                            <h1 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque">
+                                                <%= banner.title %> <br>
+                                                    <span class="hero-title-image-metal"><img
+                                                            src="images/babios/banner-1.jpg" alt=""></span>
+                                                    Made for Big Smiles
+                                                    <span class="icon-box"><img
+                                                            src="images/hero-title-image-2-metal.svg" alt=""></span>
+                                            </h1>
 
-                                        <p class="wow fadeInUp" data-wow-delay="0.4s">
-                                            Adorable, soft, and comfy outfits for babies and kids — perfect for every
-                                            little moment, from playtime to nap time.
-                                        </p>
+                                            <!--   <p class="wow fadeInUp" data-wow-delay="0.4s">
+                                                Adorable, soft, and comfy outfits for babies and kids — perfect for
+                                                every
+                                                little moment, from playtime to nap time.
+                                            </p>-->
 
-                                    </div>
-
-                                    <div class="hero-body-metal wow fadeInUp" data-wow-delay="0.6s"
-                                        style="justify-content:center;">
-
-                                        <div class="hero-btn-metal">
-                                            <a href="/about" class="btn-default btn-highlighted">Discover Our
-                                                Story</a>
                                         </div>
 
-                                        <div class="hero-event-btn-metal">
-                                            <a href="/contact" class="btn-default btn-border">Connect With Us</a>
+                                        <div class="hero-body-metal wow fadeInUp" data-wow-delay="0.6s"
+                                            style="justify-content:center;">
+
+                                            <div class="hero-btn-metal">
+                                                <a href="/about" class="btn-default btn-highlighted">Discover Our
+                                                    Story</a>
+                                            </div>
+
+                                            <div class="hero-event-btn-metal">
+                                                <a href="/contact" class="btn-default btn-border">Connect With Us</a>
+                                            </div>
+
                                         </div>
 
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Slide 2 -->
-            <div class="swiper-slide">
-                <div class="hero-metal dark-section parallaxie"
-                    style="background-image: url('images/babios/banner-22.jpg'); position:relative; background-size: cover; background-position: center; padding-top:200px; padding-bottom:150px; padding-left: 20px; padding-right: 20px; border-radius: 0;">
-                    <div class="bg-overlay"
-                        style="position:absolute; top:0; left:0; width:100%; height:100%; ; opacity:0.8; z-index:0;">
-                    </div>
-                    <div class="container" style="position:relative; z-index:1;">
-                        <div class="row justify-content-center">
-                            <div class="col-xl-9 text-center">
-                                <div class="hero-content-metal">
-                                    <div class="section-title">
+                <% }) %>
 
-                                        <h1 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque">
-                                            Cute Looks for Tiny Stars <br>
-                                            <span class="hero-title-image-metal"><img src="images/babios/banner-22.jpg"
-                                                    alt=""></span>
-                                            Style Meets Comfort
-                                            <span class="icon-box"><img src="images/hero-title-image-2-metal.svg"
-                                                    alt=""></span>
-                                        </h1>
 
-                                        <p class="wow fadeInUp" data-wow-delay="0.4s">
-                                            Trendy and playful clothing designed to keep your little ones stylish,
-                                            happy, and comfortable all day long.
-                                        </p>
-
-                                    </div>
-
-                                    <div class="hero-body-metal wow fadeInUp" data-wow-delay="0.6s"
-                                        style="justify-content:center;">
-
-                                        <div class="hero-btn-metal">
-                                            <a href="/about" class="btn-default btn-highlighted">Discover Our
-                                                Story</a>
-                                        </div>
-
-                                        <div class="hero-event-btn-metal">
-                                            <a href="/contact" class="btn-default btn-border">Connect With Us</a>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="swiper-slide">
-                <div class="hero-metal dark-section parallaxie"
-                    style="background-image: url('images/babios/banner-3.jpg'); position:relative; background-size: cover; background-position: center; padding-top:200px; padding-bottom:150px; padding-left: 20px; padding-right: 20px; border-radius: 0;">
-                    <div class="bg-overlay"
-                        style="position:absolute; top:0; left:0; width:100%; height:100%;  opacity:0.8; z-index:0;">
-                    </div>
-                    <div class="container" style="position:relative; z-index:1;">
-                        <div class="row justify-content-center">
-                            <div class="col-xl-9 text-center">
-                                <div class="hero-content-metal">
-                                    <div class="section-title">
-
-                                        <h1 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque">
-                                            Made for Little Moments <br>
-                                            <span class="hero-title-image-metal"><img src="images/babios/banner-3.jpg"
-                                                    alt=""></span>
-                                            Designed with Love
-                                            <span class="icon-box"><img src="images/hero-title-image-2-metal.svg"
-                                                    alt=""></span>
-                                        </h1>
-
-                                        <p class="wow fadeInUp" data-wow-delay="0.4s">
-                                            Soft, breathable outfits crafted with care for babies and kids — made to
-                                            grow, play, and explore in comfort.
-                                        </p>
-
-                                    </div>
-
-                                    <div class="hero-body-metal wow fadeInUp" data-wow-delay="0.6s"
-                                        style="justify-content:center;">
-
-                                        <div class="hero-btn-metal">
-                                            <a href="/about" class="btn-default btn-highlighted">Discover Our
-                                                Story</a>
-                                        </div>
-
-                                        <div class="hero-event-btn-metal">
-                                            <a href="/contact" class="btn-default btn-border">Connect With Us</a>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
         <div class="hero-pagination-metal"></div>
@@ -977,7 +882,7 @@
 
                             </div>
                             <div class="faq-cta-btn-metal">
-                                <a href="faqs.html" class="btn-default btn-highlighted">Contact Now</a>
+                                <a href="/contact" class="btn-default btn-highlighted">Contact Now</a>
                             </div>
                         </div>
                     </div>
@@ -1265,113 +1170,43 @@
                         <div class="swiper">
                             <div class="swiper-wrapper" data-cursor-text="Drag">
 
-                                <!-- Blog 1 -->
-                                <div class="swiper-slide">
-                                    <div class="feature-item-gold wow fadeInUp">
-                                        <!-- Feature Image Start -->
-                                        <div class="feature-item-image-gold">
-                                            <figure class="image-anime">
-                                                <img src="images/babios/blog.jpg" alt="">
-                                            </figure>
-                                        </div>
-                                        <!-- Feature Image End -->
-
-                                        <!-- Feature Item Content Start -->
-                                        <div class="feature-item-body-gold">
-
-                                            <div class="feature-item-content-gold">
-                                                <h3>Event Planning</h3>
-                                                <p>End to end event planning service including concept creation,
-                                                    scheduling, logistics,</p>
+                                <% blogs.forEach(function(blog) { %>
+                                    <div class="swiper-slide">
+                                        <div class="feature-item-gold wow fadeInUp">
+                                            <!-- Feature Image Start -->
+                                            <div class="feature-item-image-gold">
+                                                <figure class="image-anime">
+                                                    <img src="/uploads/<%= blog.images && blog.images[0] ? blog.images[0] : '' %>"
+                                                        alt="<%= blog.title %>">
+                                                </figure>
                                             </div>
-                                            <div class="feature-item-btn-gold">
-                                                <a href="/contact" class="readmore-btn">read More</a>
+                                            <!-- Feature Image End -->
+
+                                            <!-- Feature Item Content Start -->
+                                            <div class="feature-item-body-gold">
+
+                                                <div class="feature-item-content-gold">
+                                                    <h3>
+                                                        <%= blog.title %>
+                                                    </h3>
+                                                    <p>
+                                                        <%= blog.description ? blog.description.substring(0, 100) + '…'
+                                                            : '' %>
+                                                    </p>
+                                                </div>
+                                                <div class="feature-item-btn-gold">
+                                                    <a href="/blogDetails/<%= blog.slug %>" class="readmore-btn">read
+                                                        More</a>
+                                                </div>
                                             </div>
+                                            <!-- Feature Item Content End -->
                                         </div>
-                                        <!-- Feature Item Content End -->
                                     </div>
-                                </div>
 
-                                <!-- Blog 2 -->
-                                <div class="swiper-slide">
-                                    <div class="feature-item-gold wow fadeInUp">
-                                        <!-- Feature Image Start -->
-                                        <div class="feature-item-image-gold">
-                                            <figure class="image-anime">
-                                                <img src="images/babios/blog.jpg" alt="">
-                                            </figure>
-                                        </div>
-                                        <!-- Feature Image End -->
 
-                                        <!-- Feature Item Content Start -->
-                                        <div class="feature-item-body-gold">
+                                    <% }) %>
 
-                                            <div class="feature-item-content-gold">
-                                                <h3>Event Planning</h3>
-                                                <p>End to end event planning service including concept creation,
-                                                    scheduling, logistics,</p>
-                                            </div>
-                                            <div class="feature-item-btn-gold">
-                                                <a href="/contact" class="readmore-btn">read More</a>
-                                            </div>
-                                        </div>
-                                        <!-- Feature Item Content End -->
-                                    </div>
-                                </div>
 
-                                <!-- Blog 3 -->
-                                <div class="swiper-slide">
-                                    <div class="feature-item-gold wow fadeInUp">
-                                        <!-- Feature Image Start -->
-                                        <div class="feature-item-image-gold">
-                                            <figure class="image-anime">
-                                                <img src="images/babios/blog.jpg" alt="">
-                                            </figure>
-                                        </div>
-                                        <!-- Feature Image End -->
-
-                                        <!-- Feature Item Content Start -->
-                                        <div class="feature-item-body-gold">
-
-                                            <div class="feature-item-content-gold">
-                                                <h3>Event Planning</h3>
-                                                <p>End to end event planning service including concept creation,
-                                                    scheduling, logistics,</p>
-                                            </div>
-                                            <div class="feature-item-btn-gold">
-                                                <a href="/contact" class="readmore-btn">read More</a>
-                                            </div>
-                                        </div>
-                                        <!-- Feature Item Content End -->
-                                    </div>
-                                </div>
-
-                                <!-- Blog 4 -->
-                                <div class="swiper-slide">
-                                    <div class="feature-item-gold wow fadeInUp">
-                                        <!-- Feature Image Start -->
-                                        <div class="feature-item-image-gold">
-                                            <figure class="image-anime">
-                                                <img src="images/babios/blog.jpg" alt="">
-                                            </figure>
-                                        </div>
-                                        <!-- Feature Image End -->
-
-                                        <!-- Feature Item Content Start -->
-                                        <div class="feature-item-body-gold">
-
-                                            <div class="feature-item-content-gold">
-                                                <h3>Event Planning</h3>
-                                                <p>End to end event planning service including concept creation,
-                                                    scheduling, logistics,</p>
-                                            </div>
-                                            <div class="feature-item-btn-gold">
-                                                <a href="/contact" class="readmore-btn">read More</a>
-                                            </div>
-                                        </div>
-                                        <!-- Feature Item Content End -->
-                                    </div>
-                                </div>
 
                             </div>
                         </div>

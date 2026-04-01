@@ -6,11 +6,11 @@ function slugify(str) {
     .toString()
     .toLowerCase()
     .trim()
-    .replace(/\s+/g, '-')       
-    .replace(/_+/g, '-')        
+    .replace(/\s+/g, '-')
+    .replace(/_+/g, '-')
     .replace(/[^a-z0-9\-\.]+/g, '')
-    .replace(/\-+/g, '-')     
-    .replace(/^\-+|\-+$/g, ''); 
+    .replace(/\-+/g, '-')
+    .replace(/^\-+|\-+$/g, '');
 }
 
 const storage = multer.diskStorage({
@@ -41,5 +41,30 @@ const profileStorage = multer.diskStorage({
 
 const uploadProfile = multer({ storage: profileStorage });
 
+const bannerStorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads");
+  },
+  filename: function (req, file, cb) {
+    const ext = (path.extname(file.originalname) || ".jpg").toLowerCase();
+    const baseName = path.basename(file.originalname, path.extname(file.originalname));
+    const slug = slugify(baseName) || "banner";
+    cb(null, `banner-${slug}-${Date.now()}${ext}`);
+  },
+});
+
+const uploadBanner = multer({
+  storage: bannerStorage,
+  fileFilter: function (req, file, cb) {
+    const allowed = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+    if (allowed.includes(file.mimetype)) cb(null, true);
+    else cb(new Error("Only JPG, PNG, WEBP, and GIF images are allowed"), false);
+  },
+  limits: { fileSize: 5 * 1024 * 1024 },
+});
+
+
+
 module.exports = upload;
 module.exports.uploadProfile = uploadProfile;
+module.exports.uploadBanner = uploadBanner;

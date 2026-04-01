@@ -743,7 +743,7 @@
 
                             </div>
                             <div class="faq-cta-btn-metal">
-                                <a href="faqs.html" class="btn-default btn-highlighted">Contact Now</a>
+                                <a href="/contact" class="btn-default btn-highlighted">Contact Now</a>
                             </div>
                         </div>
                     </div>
@@ -868,113 +868,41 @@
                         <div class="swiper">
                             <div class="swiper-wrapper" data-cursor-text="Drag">
 
-                                <!-- Blog 1 -->
-                                <div class="swiper-slide">
-                                    <div class="feature-item-gold wow fadeInUp">
-                                        <!-- Feature Image Start -->
-                                        <div class="feature-item-image-gold">
-                                            <figure class="image-anime">
-                                                <img src="images/babios/blog.jpg" alt="">
-                                            </figure>
-                                        </div>
-                                        <!-- Feature Image End -->
 
-                                        <!-- Feature Item Content Start -->
-                                        <div class="feature-item-body-gold">
+                                <% blogs.forEach(function(blog) { %>
+                                    <div class="swiper-slide">
+                                        <div class="feature-item-gold wow fadeInUp">
+                                            <!-- Feature Image Start -->
+                                            <div class="feature-item-image-gold">
+                                                <figure class="image-anime">
+                                                    <img src="/uploads/<%= blog.images && blog.images[0] ? blog.images[0] : '' %>"
+                                                        alt="<%= blog.title %>">
+                                                </figure>
+                                            </div>
+                                            <!-- Feature Image End -->
 
-                                            <div class="feature-item-content-gold">
-                                                <h3>Event Planning</h3>
-                                                <p>End to end event planning service including concept creation,
-                                                    scheduling, logistics,</p>
+                                            <!-- Feature Item Content Start -->
+                                            <div class="feature-item-body-gold">
+
+                                                <div class="feature-item-content-gold">
+                                                    <h3>
+                                                        <%= blog.title %>
+                                                    </h3>
+                                                    <p>
+                                                        <%= blog.description ? blog.description.substring(0, 100) + '…'
+                                                            : '' %>
+                                                    </p>
+                                                </div>
+                                                <div class="feature-item-btn-gold">
+                                                    <a href="/blogDetails/<%= blog.slug %>" class="readmore-btn">read
+                                                        More</a>
+                                                </div>
                                             </div>
-                                            <div class="feature-item-btn-gold">
-                                                <a href="/contact" class="readmore-btn">read More</a>
-                                            </div>
+                                            <!-- Feature Item Content End -->
                                         </div>
-                                        <!-- Feature Item Content End -->
                                     </div>
-                                </div>
 
-                                <!-- Blog 2 -->
-                                <div class="swiper-slide">
-                                    <div class="feature-item-gold wow fadeInUp">
-                                        <!-- Feature Image Start -->
-                                        <div class="feature-item-image-gold">
-                                            <figure class="image-anime">
-                                                <img src="images/babios/blog.jpg" alt="">
-                                            </figure>
-                                        </div>
-                                        <!-- Feature Image End -->
-
-                                        <!-- Feature Item Content Start -->
-                                        <div class="feature-item-body-gold">
-
-                                            <div class="feature-item-content-gold">
-                                                <h3>Event Planning</h3>
-                                                <p>End to end event planning service including concept creation,
-                                                    scheduling, logistics,</p>
-                                            </div>
-                                            <div class="feature-item-btn-gold">
-                                                <a href="/contact" class="readmore-btn">read More</a>
-                                            </div>
-                                        </div>
-                                        <!-- Feature Item Content End -->
-                                    </div>
-                                </div>
-
-                                <!-- Blog 3 -->
-                                <div class="swiper-slide">
-                                    <div class="feature-item-gold wow fadeInUp">
-                                        <!-- Feature Image Start -->
-                                        <div class="feature-item-image-gold">
-                                            <figure class="image-anime">
-                                                <img src="images/babios/blog.jpg" alt="">
-                                            </figure>
-                                        </div>
-                                        <!-- Feature Image End -->
-
-                                        <!-- Feature Item Content Start -->
-                                        <div class="feature-item-body-gold">
-
-                                            <div class="feature-item-content-gold">
-                                                <h3>Event Planning</h3>
-                                                <p>End to end event planning service including concept creation,
-                                                    scheduling, logistics,</p>
-                                            </div>
-                                            <div class="feature-item-btn-gold">
-                                                <a href="/contact" class="readmore-btn">read More</a>
-                                            </div>
-                                        </div>
-                                        <!-- Feature Item Content End -->
-                                    </div>
-                                </div>
-
-                                <!-- Blog 4 -->
-                                <div class="swiper-slide">
-                                    <div class="feature-item-gold wow fadeInUp">
-                                        <!-- Feature Image Start -->
-                                        <div class="feature-item-image-gold">
-                                            <figure class="image-anime">
-                                                <img src="images/babios/blog.jpg" alt="">
-                                            </figure>
-                                        </div>
-                                        <!-- Feature Image End -->
-
-                                        <!-- Feature Item Content Start -->
-                                        <div class="feature-item-body-gold">
-
-                                            <div class="feature-item-content-gold">
-                                                <h3>Event Planning</h3>
-                                                <p>End to end event planning service including concept creation,
-                                                    scheduling, logistics,</p>
-                                            </div>
-                                            <div class="feature-item-btn-gold">
-                                                <a href="/contact" class="readmore-btn">read More</a>
-                                            </div>
-                                        </div>
-                                        <!-- Feature Item Content End -->
-                                    </div>
-                                </div>
+                                    <% }) %>
 
                             </div>
                         </div>

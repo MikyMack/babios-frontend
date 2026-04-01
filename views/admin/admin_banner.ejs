@@ -4,7 +4,7 @@
 <head>
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
-    <title>Prashobh Source - Banner Management</title>
+    <title>Babios - Banner Management</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Theme Style -->
@@ -22,8 +22,8 @@
     <link rel="stylesheet" href="/admin-icon/style.css">
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="/images/babios/logo-crop.jpeg">
-    <link rel="apple-touch-icon-precomposed" href="/images/babios/logo-crop.jpeg">
+    <link rel="shortcut icon" href="/images/babios/logo.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/babios/logo.png">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         /* Status badges */
@@ -815,6 +815,93 @@
             border-color: #007bff;
             background-color: #f8f9fa;
         }
+
+        /* Banner thumbnail in table */
+
+        .banner-thumb {
+
+            width: 120px;
+            height: 70px;
+
+            border-radius: 8px;
+            object-fit: cover;
+
+            border: 1px solid #e5e7eb;
+            display: block;
+
+        }
+
+        .no-image-placeholder {
+
+            width: 120px;
+            height: 70px;
+            border-radius: 8px;
+
+            background: #f1f5f9;
+            border: 1px dashed #cbd5e1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #94a3b8;
+            font-size: 12px;
+
+        }
+
+        .file-upload-area {
+
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 40px 20px;
+
+            text-align: center;
+            background: #f8fafc;
+            cursor: pointer;
+            position: relative;
+
+            transition: all 0.3s ease;
+
+        }
+
+        .file-upload-area:hover,
+        .file-upload-area.dragover {
+            border-color: #5c4d3b;
+            background: #f1f5f9;
+        }
+
+        .file-upload-area input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .upload-content i {
+            font-size: 48px;
+            color: #94a3b8;
+            margin-bottom: 16px;
+        }
+
+        .upload-content p {
+            margin: 0 0 8px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .upload-content small {
+            color: #64748b;
+        }
+
+        .image-preview-grid {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
     </style>
 </head>
 
@@ -830,8 +917,8 @@
                 <div class="section-menu-left">
                     <div class="box-logo">
                         <a href="/admin/dashboard" id="site-logo-inner">
-                            <img style="width:60px;" id="logo_header" alt="logo" src="/images/babios/logo-crop.jpeg"
-                                data-light="/images/babios/logo-crop.jpeg" data-dark="/images/babios/logo-crop.jpeg">
+                            <img style="width:60px;" id="logo_header" alt="logo" src="/images/babios/logo.png"
+                                data-light="/images/babios/logo.png" data-dark="/images/babios/logo.png">
                         </a>
                         <div class="button-show-hide">
                             <i class="icon-chevron-left"></i>
@@ -913,8 +1000,8 @@
                             <div class="header-left">
                                 <a href="/admin/dashboard">
                                     <img style="width: 50px;" id="logo_header_mobile" alt=""
-                                        src="/images/babios/logo-crop.jpeg" data-light="/images/babios/logo-crop.jpeg"
-                                        data-dark="/images/babios/logo-crop.jpeg">
+                                        src="/images/babios/logo.png" data-light="/images/babios/logo.png"
+                                        data-dark="/images/babios/logo.png">
                                 </a>
                                 <div class="button-show-hide">
                                     <i class="icon-chevron-left"></i>
@@ -932,7 +1019,7 @@
                         <div class="main-content-inner">
                             <div class="main-content-wrap">
                                 <div class="flex items-center flex-wrap justify-between gap20 mb-30">
-                                    <h3>Banner Management (Videos)</h3>
+                                    <h3>Banner Management</h3>
                                     <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
                                         <li>
                                             <a href="/admin/dashboard">
@@ -960,7 +1047,7 @@
                                 <div class="wg-box" id="banners-section">
                                     <div class="title-box">
                                         <i class="icon-image"></i>
-                                        <div class="body-text">Tip: Manage YouTube banner videos. You can toggle banner
+                                        <div class="body-text">Tip: Manage banner Images. You can toggle banner
                                             status, edit details, and add/remove banners.</div>
                                     </div>
 
@@ -984,7 +1071,7 @@
                                             </div>
                                         </div>
                                         <button class="add-banner-btn" onclick="showAddBannerModal()">
-                                            <i class="icon-plus"></i> Add Banner Video
+                                            <i class="icon-plus"></i> Add Banner Image
                                         </button>
                                     </div>
 
@@ -992,16 +1079,16 @@
                                         <table class="banner-list-table">
                                             <thead>
                                                 <tr>
-                                                    <th>Video</th>
+                                                    <th>Image</th>
                                                     <th>Title</th>
-                                                    <th>YouTube Link</th>
+
                                                     <th>Status</th>
                                                     <th>Created</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="banners-list">
-                                                <!-- Video banner rows will be dynamically inserted here -->
+                                                <!-- Image banner rows will be dynamically inserted here -->
                                             </tbody>
                                         </table>
                                     </div>
@@ -1022,7 +1109,7 @@
                                         <div class="modal-header">
                                             <div class="modal-title">
                                                 <i class="icon-image"></i>
-                                                <h3>Add New Banner Video</h3>
+                                                <h3>Add New Banner Image</h3>
                                             </div>
                                             <button class="close-btn" onclick="closeModal('add-banner-modal')">
                                                 <i class="icon-x"></i>
@@ -1030,35 +1117,46 @@
                                         </div>
 
                                         <div class="modal-body">
-                                            <form id="add-banner-form">
+                                            <form id="add-banner-form" enctype="multipart/form-data">
                                                 <!-- Banner Information -->
                                                 <div class="form-section">
                                                     <div class="section-header">
-                                                        <h4><i class="icon-info"></i> Banner Video Information</h4>
+                                                        <h4><i class="icon-info"></i> Banner image Information</h4>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="add-banner-title">Title *</label>
                                                         <input type="text" id="add-banner-title" name="title"
-                                                            placeholder="Enter banner video title" required>
+                                                            placeholder="Enter banner image title" required>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="add-banner-youtube-link">YouTube Link *</label>
-                                                        <input type="url" id="add-banner-youtube-link"
-                                                            name="youtubeLink"
-                                                            placeholder="e.g. https://www.youtube.com/watch?v=..."
-                                                            required>
+                                                        <label>Banner Image *</label>
+                                                        <div class="file-upload-area" id="add-upload-area">
+                                                            <input type="file" id="add-banner-image" name="image"
+                                                                accept="image/jpeg,image/png,image/webp,image/gif"
+                                                                required>
+                                                            <i class="upload-content"></i>
+                                                            <i class="icon-upload-cloud"></i>
+                                                            <p>click or drag to upload</p>
+                                                            <small>Supported formats: JPG, PNG, WEBP, GIF. Max size:
+                                                                5MB.</small>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                    <div class="image-preview-grid" id="add-image-preview">
 
+                                                    </div>
+
+                                                </div>
                                                 <div class="form-actions">
                                                     <button type="button" class="btn btn-secondary"
                                                         onclick="closeModal('add-banner-modal')">
                                                         <i class="icon-x"></i> Cancel
                                                     </button>
                                                     <button type="submit" class="btn btn-primary">
-                                                        <i class="icon-save"></i> Add Banner Video
+                                                        <i class="icon-save"></i> Save Banner
                                                     </button>
                                                 </div>
+
+
                                             </form>
                                         </div>
                                     </div>
@@ -1070,38 +1168,83 @@
                                         <div class="modal-header">
                                             <div class="modal-title">
                                                 <i class="icon-edit-3"></i>
-                                                <h3>Edit Banner Video</h3>
+                                                <h3>Edit Banner Image</h3>
                                             </div>
                                             <button class="close-btn" onclick="closeModal('edit-banner-modal')">
                                                 <i class="icon-x"></i>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form id="edit-banner-form">
+                                            <form id="edit-banner-form" enctype="multipart/form-data">
                                                 <input type="hidden" id="edit-banner-id" name="id">
                                                 <div class="form-section">
                                                     <div class="section-header">
-                                                        <h4><i class="icon-info"></i> Banner Video Information</h4>
+                                                        <h4><i class="icon-info"></i> Banner image Information</h4>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="edit-banner-title">Title *</label>
                                                         <input type="text" id="edit-banner-title" name="title" required>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="edit-banner-youtube-link">YouTube Link *</label>
-                                                        <input type="url" id="edit-banner-youtube-link"
-                                                            name="youtubeLink" required>
-                                                    </div>
+
                                                 </div>
+
+                                                <div class="form-group">
+
+                                                    <label>Current Image</label>
+
+
+
+                                                    <div id="edit-current-image-wrap" style="display:none;">
+
+                                                        <div
+                                                            style="position:relative;display:inline-block;border-radius:10px;overflow:hidden;border:2px solid #e2e8f0;max-width:200px;">
+
+                                                            <img id="edit-current-image" src="" alt="Current banner"
+                                                                style="width:100%;display:block;">
+
+                                                            <div
+                                                                style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.6);color:#fff;padding:4px 8px;text-align:center;font-size:11px;">
+                                                                Current image</div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <label style="margin-top:12px;">Replace Image <span
+                                                            style="color:#94a3b8;font-weight:400;">(optional)</span></label>
+
+                                                    <div class="file-upload-area" id="edit-upload-area">
+
+                                                        <input type="file" id="edit-banner-image" name="image"
+                                                            accept="image/jpeg,image/png,image/webp,image/gif">
+
+                                                        <div class="upload-content">
+
+                                                            <i class="icon-upload-cloud"></i>
+
+                                                            <p>Click or drag & drop to replace</p>
+
+                                                            <small>JPG, PNG, WEBP, GIF — max 5 MB</small>
+
+                                                        </div>
+                                                        <div class="image-preview-grid" id="edit-image-preview"></div>
+
+
+                                                    </div>
+
+
+                                                </div>
+
                                                 <div class="form-actions">
                                                     <button type="button" class="btn btn-secondary"
                                                         onclick="closeModal('edit-banner-modal')">
                                                         <i class="icon-x"></i> Cancel
                                                     </button>
                                                     <button type="submit" class="btn btn-primary">
-                                                        <i class="icon-save"></i> Update Banner Video
+                                                        <i class="icon-save"></i> Update Banner
                                                     </button>
                                                 </div>
+
                                             </form>
                                         </div>
                                     </div>
@@ -1121,7 +1264,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <p id="delete-confirm-message">Are you sure you want to delete this banner
-                                                video? This action cannot be undone.</p>
+                                                image? This action cannot be undone.</p>
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-secondary"
                                                     onclick="closeModal('delete-confirm-modal')">Cancel</button>
@@ -1136,14 +1279,14 @@
 
                         <!-- bottom-page -->
                         <div class="bottom-page">
-                            <div class="body-text">Copyright © 2025 <a href="">Teraxo</a>.
+                            <div class="body-text">Copyright © 2025 <a href="">Babios</a>.
                                 Design by Trivlogic Private Limited All rights reserved</div>
                         </div>
                     </div>
 
-                    <!-- SCRIPT: Banner Video Management (Dynamic Fetch/Render from /api) -->
+
                     <script>
-                        // API endpoints for videos (banners)
+                        // API endpoints for images(banners)
                         const API_BASE = "/api";
                         const api = {
                             list: `${API_BASE}/Banners`,
@@ -1159,55 +1302,70 @@
                         let bannerSearchQuery = '';
                         let totalCount = 0;
 
-                        function getEmbedUrl(youtubeLink) {
-                            // Accepts either https://youtube.com/watch?v=... or already an embed link
-                            if (!youtubeLink) return '';
-                            // If already an embed link, return as is
-                            if (/\/embed\//.test(youtubeLink)) return youtubeLink;
-                            // Else, extract id and format as embed
-                            const regexp = /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/;
-                            const match = youtubeLink.match(regexp);
-                            if (match && match[1])
-                                return `https://www.youtube.com/embed/${match[1]}`;
-                            return '';
-                        }
+
 
                         function renderBannerRows(banners) {
                             const $list = $('#banners-list');
                             $list.html('');
                             if (!banners.length) {
-                                $list.append('<tr><td colspan="6" class="text-center">No banner videos found.</td></tr>');
+                                $list.append('<tr><td colspan="5" class="text-center">No banners found</td></tr>');
                                 return;
                             }
-                            banners.forEach(banner => {
-                                const embedUrl = getEmbedUrl(banner.youtubeLink);
-                                // Format date
-                                let date = banner.createdAt
-                                    ? new Date(banner.createdAt).toLocaleDateString()
-                                    : '';
+
+                            banners.forEach(function (banner) {
+                                const date = banner.createdAt ? new Date(banner.createdAt).toLocaleDateString() : '';
+
+                                const imageCell = banner.imageUrl
+                                    ? `<img class="banner-thumb" src="${banner.imageUrl}" alt="${banner.title || ''}">`
+                                    : `<div class="no-image-placeholder"><i class="icon-image"></i></div>`;
+
+                                const statusBadge = banner.isActive
+                                    ? `<span class="status-badge active">Active</span>`
+                                    : `<span class="status-badge inactive">Inactive</span>`;
+
+                                const toggleClass = banner.isActive ? 'toggle' : 'toggle inactive';
+                                const toggleIcon = banner.isActive ? 'icon-toggle-right' : 'icon-toggle-left';
+                                const toggleTitle = banner.isActive ? 'Deactivate' : 'Activate';
+
                                 $list.append(`
-                                    <tr data-id="${banner._id}">
-                                        <td>
-                                            ${embedUrl
-                                        ? `<iframe width="120" height="68" src="${embedUrl}" frameborder="0" allowfullscreen></iframe>`
-                                        : '<span style="color:#aaa">No video</span>'}
-                                        </td>
-                                        <td>${banner.title || ''}</td>
-                                        <td>
-                                            <a href="${banner.youtubeLink}" target="_blank">${banner.youtubeLink}</a>
-                                        </td>
-                                        <td>
-                                            <span class="badge ${banner.isActive ? 'badge-success' : 'badge-danger'}">${banner.isActive ? 'Active' : 'Inactive'}</span>
-                                        </td>
-                                        <td>${date}</td>
-                                        <td>
-                                            <button class="btn btn-sm btn-primary" onclick="showEditBannerModal('${banner._id}')"><i class="icon-edit"></i></button>
-                                            <button class="btn btn-sm btn-danger" onclick="showDeleteConfirmModal('${banner._id}')"><i class="icon-trash-2"></i></button>
-                                        </td>
-                                    </tr>
-                                `);
+            <tr data-id="${banner._id}">
+                <td>${imageCell}</td>
+                <td><div class="banner-name">${banner.title || ''}</div></td>
+                <td>${statusBadge}</td>
+                <td>${date}</td>
+                <td>
+                    <div class="banner-actions">
+                        <button class="item edit" title="Edit" onclick="showEditBannerModal('${banner._id}')">
+                            <i class="icon-edit-3"></i>
+                        </button>
+                        <button class="item ${toggleClass}" title="${toggleTitle}" onclick="toggleBannerStatus('${banner._id}')">
+                            <i class="${toggleIcon}"></i>
+                        </button>
+                        <button class="item trash" title="Delete" onclick="showDeleteConfirmModal('${banner._id}')">
+                            <i class="icon-trash-2"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        `);
                             });
                         }
+
+                        function toggleBannerStatus(id) {
+                            $.ajax({
+                                url: api.active,
+                                method: 'POST',
+                                contentType: 'application/json',
+                                data: JSON.stringify({ id }),
+                                success: function () {
+                                    loadBanners();
+                                },
+                                error: function (res) {
+                                    alert((res.responseJSON && res.responseJSON.message) || 'Failed to toggle status');
+                                }
+                            });
+                        }
+
 
                         function loadBanners() {
                             let url = `${api.list}?limit=${bannerLimit}&page=${bannerCurrentPage}`;
@@ -1237,16 +1395,27 @@
                         // MODAL SHOW/HIDE FUNCTIONS
                         function showAddBannerModal() {
                             $('#add-banner-form')[0].reset();
+                            $('#add-image-preview').html('');
                             $('#add-banner-modal').show();
                         }
                         function showEditBannerModal(id) {
                             $.get(api.get(id))
                                 .done(res => {
-                                    // Support for both single object and {data: {banner obj}}
+
                                     const banner = res.data || res;
                                     $('#edit-banner-id').val(banner._id);
                                     $('#edit-banner-title').val(banner.title);
-                                    $('#edit-banner-youtube-link').val(banner.youtubeLink);
+
+                                    if (banner.imageUrl) {
+                                        $('#edit-current-image').attr('src', banner.imageUrl);
+                                        $('#edit-current-image-wrap').show();
+                                    } else {
+                                        $('#edit-current-image-wrap').hide();
+                                    }
+
+                                    $('#edit-banner-image').val('');
+                                    $('#edit-image-preview').html('');
+
                                     $('#edit-banner-modal').show();
                                 });
                         }
@@ -1262,55 +1431,59 @@
 
                         // HANDLERS
                         $(document).on('submit', '#add-banner-form', function (e) {
+
+
                             e.preventDefault();
-                            const title = $('#add-banner-title').val().trim();
-                            const youtubeLink = $('#add-banner-youtube-link').val().trim();
-                            $.post(api.create, { title, youtubeLink })
-                                .done(res => {
+                            const formData = new FormData();
+                            formData.append('title', $('#add-banner-title').val().trim());
+                            const imageFile = $('#add-banner-image')[0].files[0];
+                            if (!imageFile) {
+                                alert('Please select an image for the banner');
+                                return;
+                            }
+
+                            formData.append('image', imageFile);
+
+                            $.ajax({
+                                url: api.create,
+                                method: 'POST',
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                success: function () {
                                     closeModal('add-banner-modal');
-                                    // Update UI with the newly created banner
-                                    // Get previous list, add new at the top, re-render
-                                    let banners = [];
-                                    // Try to get all current rows' data-ids if present
-                                    $('#banners-list tr[data-id]').each(function () {
-                                        const $row = $(this);
-                                        banners.push({
-                                            _id: $row.data('id'),
-                                            title: $row.find('td').eq(1).text(),
-                                            youtubeLink: $row.find('td').eq(2).find('a').attr('href'),
-                                            isActive: $row.find('.badge-success').length > 0,
-                                            // createdAt is not strictly required in immediate append
-                                        });
-                                    });
-                                    // The API returns new banner as res.data
-                                    let newBanner = res.data || res;
-                                    if (newBanner && newBanner._id) {
-                                        banners.unshift(newBanner); // add new banner to top
-                                    }
-                                    renderBannerRows(banners);
-                                    // Optionally, reload from backend to fetch all fields (recommended)
                                     loadBanners();
-                                }).fail(res => {
+                                },
+                                error: function (res) {
                                     alert((res.responseJSON && res.responseJSON.message) || 'Failed to create banner');
-                                });
+                                }
+                            });
                         });
+
+                        //edit form submit
 
                         $(document).on('submit', '#edit-banner-form', function (e) {
                             e.preventDefault();
                             const id = $('#edit-banner-id').val();
-                            const title = $('#edit-banner-title').val().trim();
-                            const youtubeLink = $('#edit-banner-youtube-link').val().trim();
+                            const formData = new FormData();
+                            formData.append('title', $('#edit-banner-title').val().trim());
+                            const imageFile = $('#edit-banner-image')[0].files[0];
+                            if (imageFile) {
+                                formData.append('image', imageFile);
+                            }
+
                             $.ajax({
                                 url: api.update(id),
                                 method: 'PUT',
-                                contentType: 'application/json',
-                                data: JSON.stringify({ title, youtubeLink }),
+                                data: formData,
+                                processData: false,
+                                contentType: false,
                                 success: function () {
                                     closeModal('edit-banner-modal');
                                     loadBanners();
                                 },
                                 error: function (res) {
-                                    alert((res.responseJSON && res.responseJSON.message) || 'Failed to update');
+                                    alert((res.responseJSON && res.responseJSON.message) || 'Failed to update banner');
                                 }
                             });
                         });
@@ -1359,6 +1532,59 @@
     <script src="/admin-js/jquery.min.js"></script>
     <script src="/admin-js/bootstrap.min.js"></script>
     <script src="/admin-js/bootstrap-select.min.js"></script>
+
+    <script>
+        function bindImagePreview(inputSelector, previewSelector) {
+
+            $(document).on('change', inputSelector, function () {
+
+                const $preview = $(previewSelector);
+
+                $preview.html('');
+
+                const files = this.files;
+
+                if (!files || !files.length) return;
+
+                Array.from(files).forEach(function (file) {
+
+                    if (!file.type.startsWith('image/')) return;
+
+                    const reader = new FileReader();
+
+                    reader.onload = function (e) {
+
+                        $preview.append(`<div style="width:120px;height:80px;border-radius:8px;overflow:hidden;border:2px solid #e9ecef;"><img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;"></div>`);
+
+                    };
+
+                    reader.readAsDataURL(file);
+
+                });
+
+            });
+
+        }
+
+        bindImagePreview('#add-banner-image', '#add-image-preview');
+
+        bindImagePreview('#edit-banner-image', '#edit-image-preview');
+
+
+
+
+        ['add-upload-area', 'edit-upload-area'].forEach(function (id) {
+
+            const el = document.getElementById(id); if (!el) return;
+
+            el.addEventListener('dragover', function (e) { e.preventDefault(); el.classList.add('dragover'); });
+
+            el.addEventListener('dragleave', function () { el.classList.remove('dragover'); });
+
+            el.addEventListener('drop', function (e) { e.preventDefault(); el.classList.remove('dragover'); });
+
+        });
+    </script>
     <script>
         // Prevent zoom.js errors by patching addEventListener before zoom.js loads
         (function () {

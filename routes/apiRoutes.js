@@ -33,7 +33,7 @@ router.delete("/admin-testimonial/:id", isAdmin, testimonialController.deleteTes
 // BANNER ROUTES
 // ---------------------------
 // Create
-router.post('/bannerCreate', bannerController.createBanner);
+router.post('/bannerCreate', upload.single('image'), bannerController.createBanner);
 
 // Get All
 router.get('/Banners', bannerController.getAllBanners);
@@ -45,11 +45,13 @@ router.get('/bannerActive', bannerController.getActiveBanners);
 router.get('/getBanner/:id', bannerController.getBannerById);
 
 // Update
-router.put('/editBanner/:id', bannerController.updateBanner);
+router.put('/editBanner/:id', upload.single('image'), bannerController.updateBanner);
 
 // Delete
 router.delete('/deleteBanner/:id', bannerController.deleteBanner);
+router.post('/bannerActive', bannerController.toggleBannerActive);
 
+router.get('/activeBanners', bannerController.getActiveBanners);
 router.post("/createContact", upload.uploadProfile.single("profileImage"), contactController.createContact);
 
 router.get("/contact/list", isAdmin, contactController.getContacts);
