@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <meta name="author" content="Awaiken">
+    <meta name="author" content="BABIOS">
     <!-- Page Title -->
-    <title>BABIOS | CONTACT US </title>
+    <title>BABIOS | BLOGS </title>
     <!-- Favicon Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="images/babios/favicon.png">
     <!-- Google Fonts Css-->
@@ -22,6 +22,7 @@
     <!-- SlickNav Css -->
     <link href="css/slicknav.min.css" rel="stylesheet">
     <!-- Swiper Css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <!-- Font Awesome Icon Css-->
     <link href="css/all.min.css" rel="stylesheet" media="screen">
@@ -32,7 +33,6 @@
     <!-- Mouse Cursor Css File -->
     <link rel="stylesheet" href="css/mousecursor.css">
     <!-- Main Custom Css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="css/custom.css" rel="stylesheet" media="screen">
 </head>
 
@@ -98,10 +98,11 @@
                 <div class="col-lg-12">
                     <!-- Page Header Box Start -->
                     <div class="page-header-box">
-                        <h1 class="text-anime-style-3" data-cursor="-opaque">Contact us</h1>
+                        <h1 class="text-anime-style-3" data-cursor="-opaque">Our Blog & Stories</h1>
                         <nav class="wow fadeInUp">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Welcome Home / Contact & Support</a></li>
+                                <li class="breadcrumb-item"><a href="/">Welcome Home / Our Blog & Stories</a></li>
+
                             </ol>
                         </nav>
                     </div>
@@ -112,143 +113,217 @@
     </div>
     <!-- Page Header Section End -->
 
-    <!-- Page Contact Us Start -->
-    <div class="page-contact-us">
+    <!-- Page Blog Section Start -->
+    <div class="page-blog">
         <div class="container">
             <div class="row">
-                <div class="col-xl-12">
 
-                    <div class="contact-image-form-box">
+                <% blogs.forEach(function(blog) { %>
+                    <div class="col-xl-4 col-md-6">
+                        <div class="post-item wow fadeInUp">
+                            <div class="post-featured-image">
+                                <a href="/blogDetails/<%= blog.slug %>" data-cursor-text="View">
+                                    <figure class="image-anime">
+                                        <img src="/uploads/<%= blog.images[0] %>" alt="<%= blog.title %>">
+                                    </figure>
+                                </a>
+                            </div>
 
-                        <div class="contact-image-box">
+                            <div class="post-item-body">
+                                <div class="post-item-body-content">
+                                    <div class="post-item-meta">
+                                        <ul>
+                                            <li><img src="images/icon-author.svg" alt="">
+                                                <%= blog.createdBy %>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="post-item-content">
+                                        <h2><a href="/blogDetails/<%= blog.slug %>">
+                                                <%= blog.title %>
+                                            </a></h2>
+                                    </div>
+                                </div>
 
-                            <div class="contact-us-image">
-                                <figure>
-                                    <img src="images/babios/contact.jpg" alt="">
+                                <div class="post-item-btn">
+                                    <a href="/blogDetails/<%= blog.slug %>" class="readmore-btn">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% }) %>
+
+                        <!-- POST 2 -->
+                        <!--  <div class="col-xl-4 col-md-6">
+                    <div class="post-item wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="post-featured-image">
+                            <a href="blog-single.html" data-cursor-text="View">
+                                <figure class="image-anime">
+                                    <img src="images/babios/abt-9.jpg" alt="">
                                 </figure>
+                            </a>
+                        </div>
+
+                        <div class="post-item-body">
+                            <div class="post-item-body-content">
+                                <div class="post-item-meta">
+                                    <ul>
+                                        <li><img src="images/icon-author.svg" alt="">Babios Team</li>
+                                    </ul>
+                                </div>
+                                <div class="post-item-content">
+                                    <h2><a href="blog-single.html">Choosing the Right Clothes for Your Child’s
+                                            Comfort</a></h2>
+                                </div>
                             </div>
 
-                            <!-- CONTACT INFO -->
-                            <div class="contact-info-list wow fadeInUp">
+                            <div class="post-item-btn">
+                                <a href="blog-single.html" class="readmore-btn">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            -->
+                        <!-- POST 3 -->
+                        <!--     <div class="col-xl-4 col-md-6">
+                    <div class="post-item wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="post-featured-image">
+                            <a href="blog-single.html" data-cursor-text="View">
+                                <figure class="image-anime">
+                                    <img src="images/babios/abt-9.jpg" alt="">
+                                </figure>
+                            </a>
+                        </div>
 
-                                <div class="contact-info-item">
-                                    <div class="icon-box">
-                                        <img src="images/icon-phone-white.svg" alt="">
-                                    </div>
-                                    <div class="contact-info-content">
-                                        <h3>Call Us</h3>
-                                        <p><a href="tel:+919XXXXXXXXX">+91 XXXXX XXXXX</a></p>
-                                    </div>
+                        <div class="post-item-body">
+                            <div class="post-item-body-content">
+                                <div class="post-item-meta">
+                                    <ul>
+                                        <li><img src="images/icon-author.svg" alt="">Babios Team</li>
+                                    </ul>
                                 </div>
-
-                                <div class="contact-info-item">
-                                    <div class="icon-box">
-                                        <img src="images/icon-mail-white.svg" alt="">
-                                    </div>
-                                    <div class="contact-info-content">
-                                        <h3>Email Us</h3>
-                                        <p><a href="mailto:info@babios.com">info@babios.com</a></p>
-                                    </div>
+                                <div class="post-item-content">
+                                    <h2><a href="blog-single.html">How Colours Influence Your Child’s Mood &
+                                            Creativity</a></h2>
                                 </div>
+                            </div>
 
-                                <div class="contact-info-item location-item">
-                                    <div class="icon-box">
-                                        <img src="images/icon-location-white.svg" alt="">
-                                    </div>
-                                    <div class="contact-info-content">
-                                        <h3>Our Location</h3>
-                                        <p>
-                                            Babios, Pantone Apparel LLP <br>
-                                            Kerala, India
-                                        </p>
-                                    </div>
+                            <div class="post-item-btn">
+                                <a href="blog-single.html" class="readmore-btn">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            -->
+                        <!-- POST 4 -->
+                        <!--           <div class="col-xl-4 col-md-6">
+                    <div class="post-item wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="post-featured-image">
+                            <a href="blog-single.html" data-cursor-text="View">
+                                <figure class="image-anime">
+                                    <img src="images/babios/abt-9.jpg" alt="">
+                                </figure>
+                            </a>
+                        </div>
+
+                        <div class="post-item-body">
+                            <div class="post-item-body-content">
+                                <div class="post-item-meta">
+                                    <ul>
+                                        <li><img src="images/icon-author.svg" alt="">Babios Team</li>
+                                    </ul>
                                 </div>
+                                <div class="post-item-content">
+                                    <h2><a href="blog-single.html">Sustainable Fashion for Kids: Why It Matters</a></h2>
+                                </div>
+                            </div>
 
+                            <div class="post-item-btn">
+                                <a href="blog-single.html" class="readmore-btn">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            -->
+                        <!-- POST 5 -->
+                        <!--             <div class="col-xl-4 col-md-6">
+                    <div class="post-item wow fadeInUp" data-wow-delay="0.8s">
+                        <div class="post-featured-image">
+                            <a href="blog-single.html" data-cursor-text="View">
+                                <figure class="image-anime">
+                                    <img src="images/babios/abt-9.jpg" alt="">
+                                </figure>
+                            </a>
+                        </div>
+
+                        <div class="post-item-body">
+                            <div class="post-item-body-content">
+                                <div class="post-item-meta">
+                                    <ul>
+                                        <li><img src="images/icon-author.svg" alt="">Babios Team</li>
+                                    </ul>
+                                </div>
+                                <div class="post-item-content">
+                                    <h2><a href="blog-single.html">Tips for Dressing Your Baby in Every Season</a></h2>
+                                </div>
+                            </div>
+
+                            <div class="post-item-btn">
+                                <a href="blog-single.html" class="readmore-btn">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            -->
+                        <!-- POST 6 -->
+                        <!--              <div class="col-xl-4 col-md-6">
+                    <div class="post-item wow fadeInUp" data-wow-delay="1s">
+                        <div class="post-featured-image">
+                            <a href="blog-single.html" data-cursor-text="View">
+                                <figure class="image-anime">
+                                    <img src="images/babios/abt-9.jpg" alt="">
+                                </figure>
+                            </a>
+                        </div>
+
+                        <div class="post-item-body">
+                            <div class="post-item-body-content">
+                                <div class="post-item-meta">
+                                    <ul>
+                                        <li><img src="images/icon-author.svg" alt="">Babios Team</li>
+                                    </ul>
+                                </div>
+                                <div class="post-item-content">
+                                    <h2><a href="blog-single.html">How Babios Designs Clothes That Grow With Your
+                                            Child</a></h2>
+                                </div>
+                            </div>
+
+                            <div class="post-item-btn">
+                                <a href="blog-single.html" class="readmore-btn">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                        <!-- PAGINATION (UNCHANGED) -->
+                        <div class="col-lg-12">
+                            <div class="page-pagination wow fadeInUp" data-wow-delay="0.4s">
+                                <ul class="pagination">
+                                    <li><a href="#"><i class="fa-solid fa-angle-left"></i></a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-angle-right"></i></a></li>
+                                </ul>
                             </div>
                         </div>
 
-                        <!-- FORM -->
-                        <div class="contact-form">
-
-                            <div class="section-title">
-                                <h3 class="wow fadeInUp">Contact Babios</h3>
-                                <h2 class="text-anime-style-3">
-                                    We’re here to help you & your little ones
-                                </h2>
-                                <p class="wow fadeInUp" data-wow-delay="0.2s">
-                                    Have questions about our products, sizes, or orders? Our team is always ready to
-                                    assist you. Reach out to us anytime — we’d love to hear from you!
-                                </p>
-                            </div>
-
-                            <form id="contactForm" action="#" method="POST" data-toggle="validator" class="wow fadeInUp"
-                                data-wow-delay="0.4s">
-                                <div class="row">
-
-                                    <div class="form-group col-md-6 mb-4">
-                                        <input type="text" name="fname" class="form-control" id="fname"
-                                            placeholder="First Name" required>
-                                    </div>
-
-                                    <div class="form-group col-md-6 mb-4">
-                                        <input type="text" name="lname" class="form-control" id="lname"
-                                            placeholder="Last Name" required>
-                                    </div>
-
-                                    <div class="form-group col-md-6 mb-4">
-                                        <input type="text" name="phone" class="form-control" id="phone"
-                                            placeholder="Mobile Number" required>
-                                    </div>
-
-                                    <div class="form-group col-md-6 mb-4">
-                                        <input type="email" name="email" class="form-control" id="email"
-                                            placeholder="E-mail Address" required>
-                                    </div>
-
-                                    <div class="form-group col-md-12 mb-5">
-                                        <textarea name="message" class="form-control" id="message" rows="5"
-                                            placeholder="Write your message here..."></textarea>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="contact-form-btn">
-                                            <button type="submit" class="btn-default">
-                                                <span>Send Message</span>
-                                            </button>
-                                            <div id="msgSubmit" class="h3 hidden"></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </form>
-
-                        </div>
-
-                    </div>
-
-                </div>
             </div>
         </div>
     </div>
-    <!-- Page Contact Us End -->
-
-    <!-- Google Map Start -->
-    <div class="google-map">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Google Map IFrame Start -->
-                    <div class="google-map-iframe">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96737.10562045308!2d-74.08535042841811!3d40.739265258395164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1703158537552!5m2!1sen!2sin"
-                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    <!-- Google Map IFrame End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Google Map End -->
+    <!-- Page Blog Section End -->
 
     <!-- Footer Section Start -->
     <footer class="main-footer-metal dark-section">
@@ -395,12 +470,12 @@
             <span>About</span>
         </a>
 
-        <a href="/blogs" class="babios-nav-item ">
+        <a href="/blogs" class="babios-nav-item active">
             <i class="fa-solid fa-blog"></i>
             <span>Blogs</span>
         </a>
 
-        <a href="/contact" class="babios-nav-item active">
+        <a href="/contact" class="babios-nav-item">
             <i class="fa-solid fa-phone"></i>
             <span>Contact</span>
         </a>
