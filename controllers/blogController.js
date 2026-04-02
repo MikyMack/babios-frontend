@@ -43,14 +43,14 @@ exports.createBlog = async (req, res) => {
 
     const slug = slugify(title);
 
-  
+
     let images = [];
     if (req.files && req.files.length > 0) {
       images = req.files.map((file) => {
         const ext = path.extname(file.originalname || file.filename);
 
         const seoFileName = `${slug}${ext}`;
-  
+
         const oldPath = file.path;
         const newPath = path.join(path.dirname(file.path), seoFileName);
         fs.renameSync(oldPath, newPath);
@@ -63,7 +63,7 @@ exports.createBlog = async (req, res) => {
       if (Array.isArray(field)) return field;
       if (typeof field === 'string') {
         try {
-  
+
           if (field.trim().startsWith('[')) return JSON.parse(field);
         } catch (e) { }
 
@@ -209,8 +209,30 @@ exports.updateBlog = async (req, res) => {
 // =============================
 exports.getAllBlogs = async (req, res) => {
   try {
-    const blogs = await Blog.find().sort({ createdAt: -1 });
-    return res.status(200).json({ success: true, blogs });
+
+    const page = Math.max(1, parseInt(req.query.page) || 1);
+    const limit = Math.max(1, parseInt(req.query.limit) || 6);
+    const search = req.query.search ? req.query.search.trim() : '';
+
+    const filter = search ? { title: { $regex: search, $options: 'i' } } : {};
+
+    const [blogs, total] = await Promise.all([
+      Blog.find(filter)
+        .sort({ createdAt: -1 })
+        .skip((page - 1) * limit)
+        .limit(limit),
+      Blog.countDocuments(filter)
+
+    ]);
+
+
+    return res.status(200).json({
+      success: true,
+      blogs,
+      total,
+      totalPages: Math.ceil(total / limit),
+      page
+    });
   } catch (error) {
     return res.status(500).json({
       success: false,
