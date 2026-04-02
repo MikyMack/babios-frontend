@@ -15,7 +15,7 @@ function removeFile(filePath) {
     if (!filePath) return;
     const name = path.basename(filePath);
     const full = path.join(UPLOADS_DIR, name);
-    fs.unlink(full, () => {});
+    fs.unlink(full, () => { });
 }
 
 // @desc    Create Banner
@@ -25,7 +25,7 @@ exports.createBanner = async (req, res) => {
             return res.status(400).json({ success: false, message: 'Banner image is required' });
         }
 
-        const { title } = req.body;
+        const { title, subtitle, description } = req.body;
         if (!title || !title.trim()) {
             removeFile(req.file.path);
             return res.status(400).json({ success: false, message: 'Title is required' });
@@ -33,6 +33,8 @@ exports.createBanner = async (req, res) => {
 
         const banner = await Banner.create({
             title: title.trim(),
+            subtitle: subtitle ? subtitle.trim() : '',
+            description: description ? description.trim() : '',
             imageUrl: imageUrl(req, req.file.filename)
         });
 
@@ -142,6 +144,14 @@ exports.updateBanner = async (req, res) => {
 
         if (req.body.title && req.body.title.trim()) {
             banner.title = req.body.title.trim();
+        }
+
+        if (req.body.subtitle !== undefined) {
+            banner.subtitle = req.body.subtitle.trim();
+        }
+
+        if (req.body.description !== undefined) {
+            banner.description = req.body.description.trim();
         }
 
         if (req.file) {

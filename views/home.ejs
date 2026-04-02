@@ -113,17 +113,17 @@
                                                 <%= banner.title %> <br>
                                                     <span class="hero-title-image-metal"><img
                                                             src="images/babios/banner-1.jpg" alt=""></span>
-                                                    Made for Big Smiles
-                                                    <span class="icon-box"><img
-                                                            src="images/hero-title-image-2-metal.svg" alt=""></span>
+                                                    <%= banner.subtitle %>
+                                                        <span class="icon-box"><img
+                                                                src="images/hero-title-image-2-metal.svg" alt=""></span>
                                             </h1>
 
-                                            <!--   <p class="wow fadeInUp" data-wow-delay="0.4s">
-                                                Adorable, soft, and comfy outfits for babies and kids — perfect for
-                                                every
-                                                little moment, from playtime to nap time.
-                                            </p>-->
+                                            <% if(banner.description) { %>
 
+                                                <p class="wow fadeInUp" data-wow-delay="0.4s">
+                                                    <%= banner.description %>
+                                                </p>
+                                                <% } %>
                                         </div>
 
                                         <div class="hero-body-metal wow fadeInUp" data-wow-delay="0.6s"
