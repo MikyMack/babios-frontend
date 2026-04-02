@@ -8,52 +8,27 @@ const contactSchema = new mongoose.Schema(
       trim: true
     },
 
-    dob: {
-      type: Date,
-      required: true
-    },
-
     email: {
       type: String,
       required: true,
       lowercase: true,
-      trim: true
+      trim: true,
+      unique: true,
+      match: [/^\S+@\S+\.\S+$/, "Please enter a valid email"]
     },
 
     mobileNumber: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
+      match: [/^\+?[\d\s\-]{7,15}$/, "Please enter a valid mobile number"]
     },
 
-    place: {
+    subject: {
       type: String,
-      trim: true
-    },
-
-    instagramLink: {
-      type: String,
-      trim: true
-    },
-
-    height: {
-      type: Number,
+      trim: true,
+      maxlength: 500,
       required: true
-    },
-
-    weight: {
-      type: Number,
-      required: true
-    },
-
-    message: {
-      type: String,
-      trim: true
-    },
-
-    profileImage: {
-      type: String,
-      trim: true
     },
 
     isRead: {

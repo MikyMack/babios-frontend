@@ -1,45 +1,28 @@
 const Contact = require("../models/Contact");
-
-
-// Create Contact
 const nodemailer = require('nodemailer');
 
 exports.createContact = async (req, res) => {
   try {
     const {
       fullName,
-      dob,
       email,
       mobileNumber,
-      place,
-      instagramLink,
-      height,
-      weight,
-      message
+      subject
     } = req.body;
 
-    if (!fullName || !dob || !email || !mobileNumber || !height || !weight) {
+    if (!fullName || !email || !mobileNumber || !subject) {
       return res.status(400).json({
         success: false,
         message: "Required fields missing",
       });
     }
 
-    // Profile image: save filename if uploaded (files are in uploads folder)
-    const profileImage = req.file ? req.file.filename : undefined;
 
-    // Save contact to DB
     const contact = await Contact.create({
       fullName,
-      dob,
       email,
       mobileNumber,
-      place,
-      instagramLink,
-      height,
-      weight,
-      message,
-      profileImage
+      subject
     });
 
     // Setup nodemailer transporter
@@ -51,64 +34,48 @@ exports.createContact = async (req, res) => {
       }
     });
 
-    // Send confirmation mail to user
-    const userMailOptions = {
+
+    await transporter.sendMail({
       from: `"Miss Bhaarat" <${process.env.EMAIL_USER}>`,
       to: email,
-      subject: 'Registration Received | Miss Bhaarat',
+      subject: "We received your message | Miss Bhaarat",
       html: `
         <div style="font-family: Arial, sans-serif; color: #330033;">
-          <h2>Thank you for registering, ${fullName}!</h2>
-          <p>We have received your registration for Miss Bhaarat.</p>
-          <p>Our team will review your details and get in touch with you if you qualify for the next round.</p>
+          <h2>Thank you, ${fullName}!</h2>
+          <p>We've received your message and will get back to you shortly.</p>
           <hr>
-          <p><strong>Your Details:</strong></p>
           <ul>
             <li><b>Name:</b> ${fullName}</li>
-            <li><b>Date of Birth:</b> ${new Date(dob).toLocaleDateString()}</li>
             <li><b>Email:</b> ${email}</li>
             <li><b>Mobile:</b> ${mobileNumber}</li>
-            ${place ? `<li><b>Place:</b> ${place}</li>` : ''}
-            ${instagramLink ? `<li><b>Instagram:</b> ${instagramLink}</li>` : ''}
-            <li><b>Height:</b> ${height} cm</li>
-            <li><b>Weight:</b> ${weight} kg</li>
-            ${message ? `<li><b>Message:</b> ${message}</li>` : ''}
+            <li><b>Subject:</b> ${subject}</li>
           </ul>
           <hr>
           <p>With love,<br><b>Miss Bhaarat Team</b></p>
         </div>
-      `
-    };
+      `,
+    });
 
-    // Send notification mail to admin
-    const adminMailOptions = {
+    // Notification → admin
+    await transporter.sendMail({
       from: `"Miss Bhaarat Website" <${process.env.EMAIL_USER}>`,
-      to: 'pk@missbhaarat.com',
-      subject: `New Registration: ${fullName}`,
+      to: "pk@missbhaarat.com",
+      subject: `New Contact: ${fullName}`,
       html: `
         <div style="font-family: Arial, sans-serif; color: #262b2f;">
-          <h2>🎉 New Registration for Miss Bhaarat!</h2>
-          <p>A new user has submitted the registration form:</p>
-          ${profileImage ? `<p><b>Profile photo:</b> Check dashboard for uploaded image.</p>` : ''}
+          <h2>📬 New Contact Message</h2>
           <ul>
             <li><b>Name:</b> ${fullName}</li>
-            <li><b>Date of Birth:</b> ${new Date(dob).toLocaleDateString()}</li>
             <li><b>Email:</b> ${email}</li>
             <li><b>Mobile:</b> ${mobileNumber}</li>
-            ${place ? `<li><b>Place:</b> ${place}</li>` : ''}
-            ${instagramLink ? `<li><b>Instagram:</b> ${instagramLink}</li>` : ''}
-            <li><b>Height:</b> ${height} cm</li>
-            <li><b>Weight:</b> ${weight} kg</li>
-            ${message ? `<li><b>Message:</b> ${message}</li>` : ''}
+            <li><b>Subject:</b> ${subject}</li>
           </ul>
-          <p style="margin-top:20px;"><i>Login to the admin dashboard to view &amp; manage registration entries.</i></p>
+          <p><i>Login to the admin dashboard to manage this message.</i></p>
         </div>
-      `
-    };
+      `,
+    });
 
-    // Send emails
-    await transporter.sendMail(userMailOptions);
-    await transporter.sendMail(adminMailOptions);
+
 
     res.status(201).json({
       success: true,
@@ -117,12 +84,15 @@ exports.createContact = async (req, res) => {
     });
 
   } catch (error) {
-    console.error(error);
-
-    res.status(500).json({
-      success: false,
-      message: "Server error"
-    });
+    console.error("createContact error:", error);
+    if (error.code === 11000) {
+      return res.status(409).json({ success: false, message: "This email has already been submitted." });
+    }
+    if (error.name === "ValidationError") {
+      const errors = Object.values(error.errors).map((e) => e.message);
+      return res.status(400).json({ success: false, message: errors.join(", ") });
+    }
+    res.status(500).json({ success: false, message: "Server error" });
   }
 };
 
@@ -132,14 +102,41 @@ exports.createContact = async (req, res) => {
 exports.getContacts = async (req, res) => {
   try {
 
-    const contacts = await Contact.find().sort({ createdAt: -1 });
+    const page = Math.max(1, parseInt(req.query.page) || 1);
+    const limit = Math.max(1, parseInt(req.query.limit) || 10);
+    const skip = (page - 1) * limit;
+    const search = (req.query.search || "").trim();
+    const status = req.query.status || ""; // "read" | "unread" | ""
+
+    // ── Build query ──
+    const query = {};
+
+    if (search) {
+      query.$or = [
+        { fullName: { $regex: search, $options: "i" } },
+        { email: { $regex: search, $options: "i" } },
+        { mobileNumber: { $regex: search, $options: "i" } },
+      ];
+    }
+
+    if (status === "read") query.isRead = true;
+    if (status === "unread") query.isRead = false;
+
+    const [contacts, total] = await Promise.all([
+      Contact.find(query).sort({ createdAt: -1 }).skip(skip).limit(limit),
+      Contact.countDocuments(query),
+    ]);
 
     res.json({
       success: true,
-      data: contacts
+      contacts,
+      total,
+      totalPages: Math.ceil(total / limit),
+      page,
     });
 
   } catch (error) {
+    console.error("getContacts error:", error);
 
     res.status(500).json({
       success: false,
@@ -160,6 +157,9 @@ exports.markAsRead = async (req, res) => {
       { isRead: true },
       { new: true }
     );
+    if (!contact) {
+      return res.status(404).json({ success: false, message: "Contact not found" });
+    }
 
     res.json({
       success: true,
@@ -183,8 +183,10 @@ exports.markAsRead = async (req, res) => {
 exports.deleteContact = async (req, res) => {
   try {
 
-    await Contact.findByIdAndDelete(req.params.id);
-
+    const contact = await Contact.findByIdAndDelete(req.params.id);
+    if (!contact) {
+      return res.status(404).json({ success: false, message: "Contact not found" });
+    }
     res.json({
       success: true,
       message: "Contact deleted"
@@ -204,17 +206,14 @@ exports.deleteContact = async (req, res) => {
 // Get Contact Stats
 exports.getContactStats = async (req, res) => {
   try {
-    const totalContacts = await Contact.countDocuments();
-    const readContacts = await Contact.countDocuments({ isRead: true });
-    const unreadContacts = await Contact.countDocuments({ isRead: false });
-
+    const [total, read, unread] = await Promise.all([
+      Contact.countDocuments(),
+      Contact.countDocuments({ isRead: true }),
+      Contact.countDocuments({ isRead: false }),
+    ]);
     res.json({
       success: true,
-      data: {
-        total: totalContacts,
-        read: readContacts,
-        unread: unreadContacts
-      }
+      data: { total, read, unread }
     });
   } catch (error) {
     res.status(500).json({

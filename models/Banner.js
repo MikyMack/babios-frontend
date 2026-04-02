@@ -8,6 +8,18 @@ const bannerSchema = new mongoose.Schema({
         required: [true, 'Title is required'],
         trim: true
     },
+    subtitle: {
+        type: String,
+        trim: true,
+        default: ''
+
+    },
+    description: {
+        type: String,
+        trim: true,
+        default: ''
+
+    },
     imageUrl: {
         type: String,
         required: [true, 'Image URL is required'],

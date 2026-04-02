@@ -1128,6 +1128,22 @@
                                                         <input type="text" id="add-banner-title" name="title"
                                                             placeholder="Enter banner image title" required>
                                                     </div>
+
+                                                    <div class="form-group">
+                                                        <label for="add-banner-subtitle">Subtitle *</label>
+                                                        <input type="text" id="add-banner-subtitle" name="subtitle"
+                                                            placeholder="Enter banner image subtitle" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="add-banner-description">Description</label>
+                                                        <span
+                                                            style="color:#94a3b8;font-weight:400;">(optional)</span></label>
+                                                        <textarea name="description" id="add-banner-description"
+                                                            rows="3"
+                                                            placeholder="e.g. soft and comfy outfits for babies"></textarea>
+
+                                                    </div>
+
                                                     <div class="form-group">
                                                         <label>Banner Image *</label>
                                                         <div class="file-upload-area" id="add-upload-area">
@@ -1184,6 +1200,23 @@
                                                     <div class="form-group">
                                                         <label for="edit-banner-title">Title *</label>
                                                         <input type="text" id="edit-banner-title" name="title" required>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="edit-banner-subtitle">Subtitle *</label>
+                                                        <input type="text" id="edit-banner-subtitle" name="subtitle"
+                                                            required>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="edit-banner-description">Description</label>
+                                                        <span
+                                                            style="color:#94a3b8;font-weight:400;">(optional)</span></label>
+                                                        <textarea id="edit-banner-description" name="description"
+                                                            rows="3"
+                                                            placeholder="Enter banner image description"></textarea>
+
                                                     </div>
 
                                                 </div>
@@ -1405,6 +1438,8 @@
                                     const banner = res.data || res;
                                     $('#edit-banner-id').val(banner._id);
                                     $('#edit-banner-title').val(banner.title);
+                                    $('#edit-banner-subtitle').val(banner.subtitle || '');
+                                    $('#edit-banner-description').val(banner.description || '');
 
                                     if (banner.imageUrl) {
                                         $('#edit-current-image').attr('src', banner.imageUrl);
@@ -1436,6 +1471,8 @@
                             e.preventDefault();
                             const formData = new FormData();
                             formData.append('title', $('#add-banner-title').val().trim());
+                            formData.append('subtitle', $('#add-banner-subtitle').val().trim());
+                            formData.append('description', $('#add-banner-description').val().trim());
                             const imageFile = $('#add-banner-image')[0].files[0];
                             if (!imageFile) {
                                 alert('Please select an image for the banner');
@@ -1467,6 +1504,8 @@
                             const id = $('#edit-banner-id').val();
                             const formData = new FormData();
                             formData.append('title', $('#edit-banner-title').val().trim());
+                            formData.append('subtitle', $('#edit-banner-subtitle').val().trim());
+                            formData.append('description', $('#edit-banner-description').val().trim());
                             const imageFile = $('#edit-banner-image')[0].files[0];
                             if (imageFile) {
                                 formData.append('image', imageFile);
