@@ -1349,7 +1349,7 @@
                                 const date = banner.createdAt ? new Date(banner.createdAt).toLocaleDateString() : '';
 
                                 const imageCell = banner.imageUrl
-                                    ? `<img class="banner-thumb" src="${banner.imageUrl}" alt="${banner.title || ''}">`
+                                    ? `<img class="banner-thumb" src="/${banner.imageUrl}" alt="${banner.title || ''}">`
                                     : `<div class="no-image-placeholder"><i class="icon-image"></i></div>`;
 
                                 const statusBadge = banner.isActive
@@ -1418,7 +1418,7 @@
                                     $('#banner-showing-entries').text(
                                         `Showing ${banners.length} entries`
                                     );
-                                    // TODO: Update pagination if needed
+
                                 })
                                 .fail(err => {
                                     $('#banners-list').html('<tr><td colspan="6" class="text-center text-danger">Failed to load banners</td></tr>');
@@ -1442,7 +1442,7 @@
                                     $('#edit-banner-description').val(banner.description || '');
 
                                     if (banner.imageUrl) {
-                                        $('#edit-current-image').attr('src','/'+ banner.imageUrl);
+                                        $('#edit-current-image').attr('src', '/' + banner.imageUrl);
                                         $('#edit-current-image-wrap').show();
                                     } else {
                                         $('#edit-current-image-wrap').hide();
