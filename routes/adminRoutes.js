@@ -13,7 +13,7 @@ router.get('/login', (req, res) => {
 router.post('/login', (req, res) => {
     const username = (req.body.username || '').trim();
     const password = (req.body.password || '').trim();
-    if (username === 'admin@babios' && password === 'admin@admin') {
+    if (username === 'admin@babios.com' && password === 'admin@admin') {
         req.session.user = { username, isAdmin: true };
         req.session.save((err) => {
             if (err) {
