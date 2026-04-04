@@ -52,7 +52,7 @@ router.delete('/deleteBanner/:id', bannerController.deleteBanner);
 router.post('/bannerActive', bannerController.toggleBannerActive);
 
 router.get('/activeBanners', bannerController.getActiveBanners);
-router.post("/createContact", upload.uploadProfile.single("profileImage"), contactController.createContact);
+router.post("/contact", contactController.createContact);
 
 router.get("/contact/list", isAdmin, contactController.getContacts);
 
