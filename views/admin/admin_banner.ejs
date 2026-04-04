@@ -1349,7 +1349,7 @@
                                 const date = banner.createdAt ? new Date(banner.createdAt).toLocaleDateString() : '';
 
                                 const imageCell = banner.imageUrl
-                                    ? `<img class="banner-thumb" src="/${banner.imageUrl}" alt="${banner.title || ''}">`
+                                    ? `<img class="banner-thumb" src="${banner.imageUrl}" alt="${banner.title || ''}">`
                                     : `<div class="no-image-placeholder"><i class="icon-image"></i></div>`;
 
                                 const statusBadge = banner.isActive
