@@ -1442,7 +1442,7 @@
                                     $('#edit-banner-description').val(banner.description || '');
 
                                     if (banner.imageUrl) {
-                                        $('#edit-current-image').attr('src', banner.imageUrl);
+                                        $('#edit-current-image').attr('src','/'+ banner.imageUrl);
                                         $('#edit-current-image-wrap').show();
                                     } else {
                                         $('#edit-current-image-wrap').hide();
