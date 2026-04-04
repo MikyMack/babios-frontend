@@ -99,7 +99,7 @@
             <% banners.forEach(function(banner) { %>
                 <div class="swiper-slide">
                     <div class="hero-metal dark-section parallaxie"
-                        style="background-image: url('/<%= banner.imageUrl %>'); position:relative; background-size: cover; background-position: center; padding-top:200px; padding-bottom:150px; padding-left: 20px; padding-right: 20px; border-radius: 0;">
+                        style="background-image: url('<%= banner.imageUrl %>'); position:relative; background-size: cover; background-position: center; padding-top:200px; padding-bottom:150px; padding-left: 20px; padding-right: 20px; border-radius: 0;">
                         <div class="bg-overlay"
                             style="position:absolute; top:0; left:0; width:100%; height:100%;  opacity:0.8; z-index:0;">
                         </div>
@@ -115,7 +115,8 @@
                                                             src="/images/babios/banner-1.jpg" alt=""></span>
                                                     <%= banner.subtitle %>
                                                         <span class="icon-box"><img
-                                                                src="/images/hero-title-image-2-metal.svg" alt=""></span>
+                                                                src="/images/hero-title-image-2-metal.svg"
+                                                                alt=""></span>
                                             </h1>
 
                                             <% if(banner.description) { %>

@@ -3,12 +3,19 @@ const path = require('path');
 const fs = require('fs');
 const Banner = require('../models/Banner');
 
+function normalizeImageUrl(imageUrl) {
+    if (!imageUrl) return '';
+    if (imageUrl.includes('/uploads/')) {
+        return 'uploads/' + imageUrl.split('/uploads/')[1];
+    }
+    return imageUrl;
+}
 
 
 const UPLOADS_DIR = path.join(__dirname, '../uploads');
 
 function imageUrl(req, filename) {
-    return `${req.protocol}://${req.get('host')}/uploads/${path.basename(filename)}`;
+    return `uploads/${path.basename(filename)}`;
 }
 
 function removeFile(filePath) {
@@ -70,13 +77,21 @@ exports.getAllBanners = async (req, res) => {
             Banner.countDocuments(filter)
         ]);
 
+        const normalizedBanners = banners.map(b => ({
+            ...b.toObject(),
+            imageUrl: normalizeImageUrl(b.imageUrl)
+
+        }
+
+        ));
+
         res.status(200).json({
             success: true,
-            count: banners.length,
+            count: normalizedBanners.length,
             total,
             totalPages: Math.ceil(total / limit),
             page,
-            data: banners
+            data: normalizedBanners
         });
 
     } catch (error) {
@@ -93,9 +108,13 @@ exports.getActiveBanners = async (req, res) => {
     try {
         const banners = await Banner.find({ isActive: true }).sort({ createdAt: -1 });
 
+          const normalizedBanners = banners.map(b => ({
+            ...b.toObject(),
+            imageUrl: normalizeImageUrl(b.imageUrl)
+        }));
         res.status(200).json({
             success: true,
-            data: banners
+            data: normalizedBanners
         });
 
     } catch (error) {
@@ -121,7 +140,10 @@ exports.getBannerById = async (req, res) => {
 
         res.status(200).json({
             success: true,
-            data: banner
+            data: {
+                ...banner.toObject(),
+                imageUrl: normalizeImageUrl(banner.imageUrl)
+            }
         });
 
     } catch (error) {

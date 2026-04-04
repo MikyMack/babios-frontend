@@ -20,11 +20,22 @@ router.get('/', async (req, res) => {
             Testimonial.find().sort({ createdAt: -1 }).limit(10).lean(),
         ]);
 
-        // Map embed URLs for banners
-        const bannersWithEmbed = banners.map(banner => ({
-            ...banner,
-            embedUrl: getEmbedUrl(banner.youtubeLink)
-        }));
+
+        const bannersWithEmbed = banners.map(banner => {
+
+            let imageUrl = banner.imageUrl || '';
+            if (imageUrl.includes('/uploads/')) {
+                imageUrl = 'uploads/' + imageUrl.split('/uploads/')[1];
+            }
+            return {
+                ...banner,
+                imageUrl,
+                embedUrl: getEmbedUrl(banner.youtubeLink)
+            };
+
+
+
+        });
 
         res.render('home', {
             banners: bannersWithEmbed,
